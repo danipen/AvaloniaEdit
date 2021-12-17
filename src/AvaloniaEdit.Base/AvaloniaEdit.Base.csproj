@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="App.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="MainView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+      <AvaloniaResource Include="Assets\**" />
+      <AvaloniaResource Include="**\*.xaml" />
+  </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Resources\SampleFiles\**\*" />
+    </ItemGroup>
+
+    <ItemGroup>
+    <None Remove="MainWindow.xaml" />
+  </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia.Desktop" Version="0.10.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AvaloniaEdit.TextMate\AvaloniaEdit.TextMate.csproj" />
+      <ProjectReference Include="..\AvaloniaEdit\AvaloniaEdit.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AvaloniaResource Update="MainWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </AvaloniaResource>
+    </ItemGroup>
+    
+</Project>

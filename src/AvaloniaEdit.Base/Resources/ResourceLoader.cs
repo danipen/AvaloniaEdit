@@ -5,7 +5,7 @@ namespace AvaloniaEdit.Demo.Resources
 {
     internal class ResourceLoader
     {
-        const string SampleFilesPrefix = "AvaloniaEdit.Demo.Resources.SampleFiles.";
+        const string SampleFilesPrefix = "AvaloniaEdit.Base.Resources.SampleFiles.";
 
         internal static string LoadSampleFile(string fileName)
         {

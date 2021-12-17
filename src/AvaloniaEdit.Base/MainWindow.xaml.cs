@@ -20,7 +20,7 @@ using TextMateSharp.Model;
 using TextMateSharp.Registry;
 using TextMateSharp.Themes;
 
-namespace AvaloniaEdit.Demo
+namespace AvaloniaEdit.Base
 {
     using Pair = KeyValuePair<int, IControl>;
 

@@ -1,7 +1,7 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:cc="clr-namespace:AvaloniaEdit.CodeCompletion;assembly=AvaloniaEdit"
-             x:Class="AvaloniaEdit.Demo.App">
+             x:Class="AvaloniaEdit.Base.App">
   <Application.Styles>
     <FluentTheme Mode="Dark" />
     <StyleInclude Source="avares://AvaloniaEdit/AvaloniaEdit.xaml" />

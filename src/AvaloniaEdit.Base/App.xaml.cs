@@ -4,10 +4,12 @@ using Avalonia.Controls.Platform;
 using Avalonia.Markup.Xaml;
 using System;
 
-namespace AvaloniaEdit.Demo
+namespace AvaloniaEdit.Base
 {
     public class App : Application
     {
+        public static bool EnableInputOutput { get; set; } = true;
+
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
@@ -21,21 +23,10 @@ namespace AvaloniaEdit.Demo
                 var window = new MainWindow();
 
                 desktopLifetime.MainWindow = window;
-                //PlatformManager.CreateEmbeddableWindow().Crea
-                
-
             }
             else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewLifetime)
             {
-                throw new NotImplementedException();
-                /*
-                view.Initialized += (sennder, e) =>
-                {
-                    App.Load();
-                };
-
-                singleViewLifetime.MainView = view;
-                */
+                singleViewLifetime.MainView = new MainView();
             }
 
             base.OnFrameworkInitializationCompleted();
