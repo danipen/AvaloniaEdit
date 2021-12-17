@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <IsPackable>False</IsPackable>
@@ -59,6 +59,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AvaloniaEdit.Base\AvaloniaEdit.Base.csproj" />
+    <ProjectReference Include="..\AvaloniaEdit.TextMate\AvaloniaEdit.TextMate.csproj" />
   </ItemGroup>
 
 </Project>

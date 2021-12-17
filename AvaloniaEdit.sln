@@ -20,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaEdit.TextMate", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaEdit.Base", "src\AvaloniaEdit.Base\AvaloniaEdit.Base.csproj", "{09307C22-CE38-46FA-88A8-4EA79A28479D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaEdit.Web", "src\AvaloniaEdit.Web\AvaloniaEdit.Web.csproj", "{DFBDFD72-B0DE-4596-A26B-563EC6747FCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaEdit.Web", "src\AvaloniaEdit.Web\AvaloniaEdit.Web.csproj", "{EC691179-97EB-45DA-A848-7A8CC5512E0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,14 +70,14 @@ Global
 		{09307C22-CE38-46FA-88A8-4EA79A28479D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{09307C22-CE38-46FA-88A8-4EA79A28479D}.Release|x64.ActiveCfg = Release|Any CPU
 		{09307C22-CE38-46FA-88A8-4EA79A28479D}.Release|x64.Build.0 = Release|Any CPU
-		{DFBDFD72-B0DE-4596-A26B-563EC6747FCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFBDFD72-B0DE-4596-A26B-563EC6747FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFBDFD72-B0DE-4596-A26B-563EC6747FCA}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{DFBDFD72-B0DE-4596-A26B-563EC6747FCA}.Debug|x64.Build.0 = Debug|Any CPU
-		{DFBDFD72-B0DE-4596-A26B-563EC6747FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFBDFD72-B0DE-4596-A26B-563EC6747FCA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFBDFD72-B0DE-4596-A26B-563EC6747FCA}.Release|x64.ActiveCfg = Release|Any CPU
-		{DFBDFD72-B0DE-4596-A26B-563EC6747FCA}.Release|x64.Build.0 = Release|Any CPU
+		{EC691179-97EB-45DA-A848-7A8CC5512E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC691179-97EB-45DA-A848-7A8CC5512E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC691179-97EB-45DA-A848-7A8CC5512E0B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EC691179-97EB-45DA-A848-7A8CC5512E0B}.Debug|x64.Build.0 = Debug|Any CPU
+		{EC691179-97EB-45DA-A848-7A8CC5512E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC691179-97EB-45DA-A848-7A8CC5512E0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC691179-97EB-45DA-A848-7A8CC5512E0B}.Release|x64.ActiveCfg = Release|Any CPU
+		{EC691179-97EB-45DA-A848-7A8CC5512E0B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,6 +17,13 @@ using AvaloniaEdit.Document;
 using AvaloniaEdit.Editing;
 using AvaloniaEdit.Highlighting;
 using AvaloniaEdit.Rendering;
+using System.IO;
+using Avalonia.Threading;
+using AvaloniaEdit.Demo.Resources;
+using AvaloniaEdit.TextMate;
+using TextMateSharp.Model;
+using TextMateSharp.Registry;
+using TextMateSharp.Themes;
 
 namespace AvaloniaEdit.Base
 {
@@ -25,20 +32,25 @@ namespace AvaloniaEdit.Base
     public class MainView : UserControl
     {
         private readonly TextEditor _textEditor;
+        private readonly TextMate.TextMate.Installation _textMateInstallation;
         private CompletionWindow _completionWindow;
         private OverloadInsightWindow _insightWindow;
         private Button _addControlBtn;
         private Button _clearControlBtn;
+        private Button _changeThemeBtn;
+        private ComboBox _syntaxModeCombo;
         private ElementGenerator _generator = new ElementGenerator();
+        private int _currentTheme = (int)ThemeName.DarkPlus;
 
         public MainView()
         {
-            InitializeComponent();            
+            InitializeComponent();
 
             _textEditor = this.FindControl<TextEditor>("Editor");
             _textEditor.Background = Brushes.Transparent;
             _textEditor.ShowLineNumbers = true;
-            //_textEditor.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("C#");
+
+            _textEditor.TextArea.Background = this.Background;
             _textEditor.TextArea.TextEntered += textEditor_TextArea_TextEntered;
             _textEditor.TextArea.TextEntering += textEditor_TextArea_TextEntering;
             _textEditor.TextArea.IndentationStrategy = new Indentation.CSharp.CSharpIndentationStrategy();
@@ -49,14 +61,55 @@ namespace AvaloniaEdit.Base
             _clearControlBtn = this.FindControl<Button>("clearControlBtn");
             _clearControlBtn.Click += _clearControlBtn_Click; ;
 
+            _changeThemeBtn = this.FindControl<Button>("changeThemeBtn");
+            _changeThemeBtn.Click += _changeThemeBtn_Click;
+
             _textEditor.TextArea.TextView.ElementGenerators.Add(_generator);
-            
+
+            _textMateInstallation = _textEditor.InstallTextMate(
+                (ThemeName)_currentTheme,
+                null);
+
+            Language csharpLanguage = _textMateInstallation.RegistryOptions.GetLanguageByExtension(".cs");
+
+            _syntaxModeCombo = this.FindControl<ComboBox>("syntaxModeCombo");
+            _syntaxModeCombo.Items = _textMateInstallation.RegistryOptions.GetAvailableLanguages();
+            _syntaxModeCombo.SelectedItem = csharpLanguage;
+            _syntaxModeCombo.SelectionChanged += _syntaxModeCombo_SelectionChanged;
+
+            string scopeName = _textMateInstallation.RegistryOptions.GetScopeByLanguageId(csharpLanguage.Id);
+
+            _textEditor.Document = new TextDocument(ResourceLoader.LoadSampleFile(scopeName));
+            _textMateInstallation.SetGrammarByLanguageId(csharpLanguage.Id);
+
             this.AddHandler(PointerWheelChangedEvent, (o, i) =>
             {
                 if (i.KeyModifiers != KeyModifiers.Control) return;
                 if (i.Delta.Y > 0) _textEditor.FontSize++;
                 else _textEditor.FontSize = _textEditor.FontSize > 1 ? _textEditor.FontSize - 1 : 1;
             }, RoutingStrategies.Bubble, true);
+        }
+
+        internal void Dispose()
+        {
+            _textMateInstallation.Dispose();
+        }
+
+        private void _syntaxModeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Language language = (Language)_syntaxModeCombo.SelectedItem;
+
+            string scope = _textMateInstallation.RegistryOptions.GetScopeByLanguageId(language.Id);
+
+            _textEditor.Document = new TextDocument(ResourceLoader.LoadSampleFile(scope));
+            _textMateInstallation.SetGrammarByLanguageId(language.Id);
+        }
+
+        void _changeThemeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _currentTheme = (_currentTheme + 1) % Enum.GetNames(typeof(ThemeName)).Length;
+
+            _textMateInstallation.SetTheme((ThemeName)_currentTheme);
         }
 
         private void InitializeComponent()
@@ -234,5 +287,6 @@ namespace AvaloniaEdit.Base
                 return x.Key.CompareTo(y.Key);
             }
         }
+
     }
 }
