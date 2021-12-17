@@ -19,7 +19,7 @@ jobs:
     - name: Publish .NET Project
       run: dotnet publish src/AvaloniaEdit.Web/AvaloniaEdit.Web.csproj -c Release -o release --nologo
 
-    - name: Change base-tag in index.html from / to NodeEditor
+    - name: Change base-tag in index.html from / to AvaloniaEdit
       run: sed -i 's/<base href="\/" \/>/<base href="\/AvaloniaEdit\/" \/>/g' release/wwwroot/index.html
 
     - name: copy index.html to 404.html
